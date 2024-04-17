@@ -41,5 +41,5 @@ dependencies {
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 
-    implementation platform('com.google.firebase:firebase-bom:32.8.0') //firebase //platform maybe not
+    implementation libs.firebase.bom //firebase //platform maybe not
 }

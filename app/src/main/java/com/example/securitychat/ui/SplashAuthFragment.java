@@ -1,58 +1,52 @@
-// app/src/main/java/com/example/securitychat/ui/SplashAuthFragment.java
 package com.example.securitychat.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.securitychat.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
- * Фрагмент, который при запуске проверяет, есть ли анонимный пользователь,
- * и если нет — выполняет signInAnonymously(), затем переходит в ChatListFragment.
+ * Сплэш-экран: выполняет анонимную авторизацию
+ * и после успеха переходит к основному графу (Chat + BottomNavigation).
  */
 public class SplashAuthFragment extends Fragment {
-    private FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(
             @NonNull LayoutInflater inflater,
             ViewGroup container,
-            Bundle savedInstanceState
-    ) {
+            Bundle savedInstanceState) {
+
+        // attachToRoot = false, как всегда в onCreateView
         return inflater.inflate(R.layout.fragment_splash_auth, container, false);
     }
 
     @Override
     public void onViewCreated(
             @NonNull View view,
-            @Nullable Bundle savedInstanceState
-    ) {
+            @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
 
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
-            // Уже залогинен анонимно
-            navigateToChatList(view);
+            proceedToMain();
         } else {
-            // Выполняем анонимную аутентификацию
             mAuth.signInAnonymously()
-                    .addOnCompleteListener(getActivity(), task -> {
-                        // В любом случае переходим дальше (на прототипе можно не обрабатывать ошибку отдельно)
-                        navigateToChatList(view);
-                    });
+                    .addOnCompleteListener(task -> proceedToMain());
         }
     }
 
-    private void navigateToChatList(View view) {
-        NavController navController = Navigation.findNavController(view);
-        navController.navigate(R.id.action_splash_to_chatList);
+    /** Переход к стартовому фрагменту основного графа. */
+    private void proceedToMain() {
+        NavHostFragment.findNavController(this)
+                .navigate(R.id.action_splash_to_chat);
     }
 }

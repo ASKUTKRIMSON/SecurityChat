@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/chatListFragment"
+        android:icon="@drawable/ic_send"
+        android:title="Чат"/>
+    <item android:id="@+id/roomsFragment"
+        android:icon="@drawable/ic_more_vert"
+        android:title="Комнаты"/>
+    <item android:id="@+id/createRoomFragment"
+        android:icon="@drawable/ic_add"
+        android:title="Создать"/>
+    <item android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_settings"
+        android:title="Настройки"/>
+    <item android:id="@+id/aboutFragment"
+        android:icon="@drawable/ic_info"
+        android:title="О прил."/>
+</menu>

@@ -8,6 +8,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SecurityChat\n\nВерсия 1.0\n\nАвтор: Ваше ФИО\n\nКак пользоваться:\n— Запустите приложение, дождитесь аутентификации;\n— Напишите сообщение в общем чате;\n— Смотрите ответы других анонимных пользователей.\n\nСлужба поддержки: support@example.com"
+        android:text="SecurityChat\n\nВерсия 1.0\n\nАвтор: Кутаев Аслан Казбекович\n\nКак пользоваться:\n— Запустите приложение, дождитесь аутентификации;\n— Напишите сообщение в общем чате;\n— Смотрите ответы других анонимных пользователей.\n\nСлужба поддержки: askutkrimson@gmail.com"
         android:textSize="16sp" />
 </ScrollView>

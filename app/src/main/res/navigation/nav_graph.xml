@@ -44,4 +44,23 @@
         android:id="@+id/aboutFragment"
         android:name="com.example.securitychat.ui.AboutFragment"
         android:label="About" />
+
+    <fragment
+        android:id="@+id/roomsFragment"
+        android:name="com.example.securitychat.ui.RoomsFragment"
+        android:label="Rooms">
+        <action
+            android:id="@+id/action_rooms_to_privateChat"
+            app:destination="@id/privateChatFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/privateChatFragment"
+        android:name="com.example.securitychat.ui.PrivateChatFragment"
+        android:label="PrivateChat">
+        <argument
+            android:name="roomId"
+            app:argType="string" />
+    </fragment>
+
 </navigation>

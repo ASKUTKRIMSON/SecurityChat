@@ -14,6 +14,10 @@ import androidx.navigation.Navigation;
 import com.example.securitychat.R;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Фрагмент, который при запуске проверяет, есть ли анонимный пользователь,
+ * и если нет — выполняет signInAnonymously(), затем переходит в ChatListFragment.
+ */
 public class SplashAuthFragment extends Fragment {
     private FirebaseAuth mAuth;
 
@@ -35,11 +39,13 @@ public class SplashAuthFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
         if (mAuth.getCurrentUser() != null) {
+            // Уже залогинен анонимно
             navigateToChatList(view);
         } else {
+            // Выполняем анонимную аутентификацию
             mAuth.signInAnonymously()
                     .addOnCompleteListener(getActivity(), task -> {
-                        // Если вход успешен или нет, переходим дальше
+                        // В любом случае переходим дальше (на прототипе можно не обрабатывать ошибку отдельно)
                         navigateToChatList(view);
                     });
         }

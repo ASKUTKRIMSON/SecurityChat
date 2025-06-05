@@ -1,13 +1,18 @@
 // app/src/main/java/com/example/securitychat/model/Message.java
 package com.example.securitychat.model;
 
+/**
+ * Простая модель сообщения.
+ * Должен иметь пустой конструктор для Firestore.
+ */
 public class Message {
     private String text;
     private String senderUid;
     private long timestamp;
 
-    // Пустой конструктор для Firestore
-    public Message() { }
+    public Message() {
+        // Пустой конструктор необходим для Firestore
+    }
 
     public Message(String text, String senderUid, long timestamp) {
         this.text = text;

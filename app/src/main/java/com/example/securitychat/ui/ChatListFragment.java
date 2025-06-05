@@ -30,6 +30,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Фрагмент общего чата.
+ * Использует FirestoreRecyclerAdapter для автоподгрузки сообщений.
+ */
 public class ChatListFragment extends Fragment {
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;

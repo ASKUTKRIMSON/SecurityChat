@@ -17,18 +17,22 @@ import com.example.securitychat.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+/**
+ * Сервис для приёма push-уведомлений от Firebase Cloud Messaging.
+ */
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String CHANNEL_ID = "security_chat_channel";
 
     @Override
     public void onNewToken(@NonNull String token) {
         super.onNewToken(token);
-        // Если нужно, можно отправить новый токен на свой сервер
+        // При генерации нового токена (например, при переустановке приложения) его можно отправить на свой бэкенд.
     }
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
+        // Если в уведомлении есть payload, показываем его
         if (remoteMessage.getNotification() != null) {
             sendNotification(
                     remoteMessage.getNotification().getTitle(),
@@ -47,7 +51,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, CHANNEL_ID)
-                        .setSmallIcon(R.drawable.ic_notification)
+                        .setSmallIcon(R.drawable.ic_notification) // Убедитесь, что ic_notification есть в drawable
                         .setContentTitle(title)
                         .setContentText(messageBody)
                         .setAutoCancel(true)
@@ -57,6 +61,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
+        // Для Android O и выше требуется создание канала уведомлений
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     CHANNEL_ID,

@@ -51,4 +51,19 @@ dependencies {
 
     implementation libs.google.firebase.auth
     implementation platform(libs.firebase.bom) //firebase //platform maybe not
+    implementation libs.androidx.lifecycle.livedata
+    implementation libs.lifecycle.runtime
+
+    // Navigation Component (Java)
+    implementation libs.androidx.navigation.fragment.ktx
+    implementation libs.navigation.ui.ktx
+
+    // Firebase Auth (Anonymous)
+    implementation libs.google.firebase.auth
+    // Firestore
+    implementation libs.firebase.firestore
+    // Firebase UI for FirestoreRecyclerAdapter
+    implementation libs.firebase.ui.firestore
+    // Firebase Cloud Messaging
+    implementation libs.firebase.messaging
 }

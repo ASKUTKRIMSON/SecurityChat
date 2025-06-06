@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashAuthFragment">
@@ -7,7 +8,7 @@
     <fragment
         android:id="@+id/splashAuthFragment"
         android:name="com.example.securitychat.ui.SplashAuthFragment"
-        android:label="SplashAuth">
+        android:label="Splash">
         <action
             android:id="@+id/action_splash_to_chat"
             app:destination="@id/chatListFragment"
@@ -18,7 +19,7 @@
     <fragment
         android:id="@+id/chatListFragment"
         android:name="com.example.securitychat.ui.ChatListFragment"
-        android:label="ChatList"/>
+        android:label="Chat List"/>
 
     <fragment
         android:id="@+id/roomsFragment"
@@ -26,16 +27,14 @@
         android:label="Rooms"/>
 
     <fragment
-        android:id="@+id/privateChatFragment"
-        android:name="com.example.securitychat.ui.PrivateChatFragment"
-        android:label="PrivateChat">
-        <argument android:name="roomId" app:argType="string"/>
-    </fragment>
-
-    <fragment
         android:id="@+id/createRoomFragment"
         android:name="com.example.securitychat.ui.CreateRoomFragment"
-        android:label="CreateRoom"/>
+        android:label="Create Room"/>
+
+    <fragment
+        android:id="@+id/privateChatFragment"
+        android:name="com.example.securitychat.ui.PrivateChatFragment"
+        android:label="Private Chat"/>
 
     <fragment
         android:id="@+id/settingsFragment"

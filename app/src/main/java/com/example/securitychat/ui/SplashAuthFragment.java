@@ -14,8 +14,8 @@ import com.example.securitychat.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
- * Сплэш-экран: выполняет анонимную авторизацию
- * и после успеха переходит к основному графу (Chat + BottomNavigation).
+ * Сплэш-фрагмент: выполняет анонимную авторизацию и
+ * после успеха переходит в основной граф (ChatListFragment).
  */
 public class SplashAuthFragment extends Fragment {
 
@@ -25,7 +25,7 @@ public class SplashAuthFragment extends Fragment {
             ViewGroup container,
             Bundle savedInstanceState) {
 
-        // attachToRoot = false, как всегда в onCreateView
+        // attachToRoot = false
         return inflater.inflate(R.layout.fragment_splash_auth, container, false);
     }
 
@@ -44,7 +44,7 @@ public class SplashAuthFragment extends Fragment {
         }
     }
 
-    /** Переход к стартовому фрагменту основного графа. */
+    /** Перейти к экрану ChatListFragment. */
     private void proceedToMain() {
         NavHostFragment.findNavController(this)
                 .navigate(R.id.action_splash_to_chat);
